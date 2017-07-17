@@ -1,0 +1,26 @@
+Respected Sir, 
+I m trying the same code of customer churn but in cross validation section is gives an error .i m sending python code with error message .plz sort out my problem
+that's the code;
+
+from sklearn.cross_validation import KFold
+
+def run_cv(X,y,clf_class,**kwargs):
+    # Construct a kfolds object
+    kf = KFold(len(y),n_folds=5,shuffle=True)
+    y_pred = y.copy()
+    
+    # Iterate through folds
+    for train_index, test_index in kf:
+        X_train, X_test = X[train_index], X[test_index]
+        y_train = y[train_index]
+        # Initialize a classifier with key word arguments
+        clf = clf_class(**kwargs)
+        clf.fit(X_train,y_train)
+        y_pred[test_index] = clf.predict(X_test)
+    return y_pred
+
+It gives this error please solve this issue and guide me how to solve it 
+
+E:\Anaconda folder\lib\site-packages\sklearn\cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+  
